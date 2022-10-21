@@ -12,7 +12,9 @@ class Menu extends Model
         'name',
         'description',
         'price',
-        'status'
+        'photo',
+        'status',
+        'createdBy'
     ];
 
     public function scopeFilter($query, array $filters){

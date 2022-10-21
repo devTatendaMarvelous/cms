@@ -40,7 +40,7 @@ var cart = {
       // WRAPPER
       p = products[id];
       item = document.createElement("div");
-      item.className = "p-item";
+      item.className = " p-3 col-md-3 card-header";
       cart.hPdt.appendChild(item);
 
       // PRODUCT IMAGE
@@ -57,7 +57,7 @@ var cart = {
 
       // PRODUCT DESCRIPTION
       part = document.createElement("div");
-      part.innerHTML = p.desc;
+      part.innerHTML = p.description;
       part.className = "p-desc";
       item.appendChild(part);
 
@@ -238,3 +238,6 @@ var cart = {
 };
 
 window.addEventListener("DOMContentLoaded", cart.init);
+
+
+

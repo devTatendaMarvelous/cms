@@ -1,6 +1,14 @@
-<center><h2><strong>You Ordered: </strong></h2>
+
+     <x-client>
+               <!--Basic Table Starts-->
+
+<!--Basic Table Ends-->
+
+
+
+     <center mt-4><h2><strong>You Ordered: </strong></h2>
 @forelse ($order as $item)
-     {{ $item }} <br> <br>
+     {{ $item }} <br> 
 @empty
      
 @endforelse
@@ -8,16 +16,38 @@
 
 </center>
 <hr>
-<center><form action="/orders/pay" method="POST">
+<center>
+     <div class="row">
+          <div class="col-12">
+               <div class="col-4">
+               <div class="col-8">
+                     <form action="/orders/pay" method="POST">
 @csrf
 <input type="hidden" name="order" value="{{ $items }}">
-<h2><strong>And It Costs</strong></h2>
-<strong>ZWL$ </strong><input type="text" name="amount" value="{{ $amount }}" readonly><br><br>
-<label for=""><h2><strong>Enter Ecocash Number To Buy</strong></h2></label>
-<input type="text" name="number" placeholder="Ecocash Number Here">
+<h6><strong></strong></h6>
+<label for=""><h6><strong>And It Costs</strong></h6></label><br>
+<strong>ZWL$ </strong><input type="text" name="amount" class="form-control text-center" value="{{ $amount }}" readonly><br><br>
+<label for=""><h6><strong>Enter Phone Number To Create Order</strong></h6></label>
+<input type="text" class="form-control text-center" name="number" placeholder="Phone Number Here">
 @error('number')
           {{ $message }}
      @enderror
-<input type="submit" value="Buy">
+     <br>
+               <input type="submit" class="form-control btn btn-primary"  value="Create Order" onclick="emptyCart()">
 
-</form></center>
+</form>
+               </div>
+          </div>
+          </div>
+     </div>
+    
+
+</center>
+
+ <script >
+     const emptyCart = () => {
+  cart.items = {};
+      localStorage.removeItem("cart");
+      cart.list();
+}
+ </script></x-client>

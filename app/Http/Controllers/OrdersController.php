@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -18,9 +19,18 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders=Order::latest()->filter(request(['search']))->get();//join('orders','orders.user','=','users.id');
-        // dd($orders);
+        $orders=User::join('orders','orders.user','=','users.id')->get();
+      
+        //latest()->filter(request(['search']))->get(); dd($orders);
       return view('orders.index')->with('orders',$orders);
+    }
+
+    public function client()
+    {
+        $orders=User::join('orders','orders.user','=','users.id')->where('user',auth::user()->id)->get();
+      
+        //latest()->filter(request(['search']))->get(); dd($orders);
+      return view('client.orders')->with('orders',$orders);
     }
 
 
@@ -41,17 +51,31 @@ class OrdersController extends Controller
      public function pay()
     {
         $order=request()->validate([
+            
             'number'=>'required',
             'amount'=>'required',
              'order'=>'required',
             
         ]);
-        $order['user']=1;
-        $order['status']='Paid';
+        $order['user']=auth()->user()->id;
+        $order['status']='Pending';
         $order['refno']='CMS'.str::random(4);
         
         Order::create($order);
-        return redirect('/');
+        
+        return view('paynow')->with('order',$order);
+
+
+    }
+
+     public function paid()
+    {
+        $transaction['status']='Paid';
+        $transaction['paymentRef']=request()->paymentRef;
+       $order= Order::where('refno',request()->refno)->get();
+      
+       Order::find($order[0]['id'])->update($transaction);
+        return view('home');
 
 
     }

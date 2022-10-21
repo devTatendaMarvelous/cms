@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Simple JS Cart</title>
+<x-app>
+     
 
-    <!-- (A) CSS + JS -->
-    <link rel="stylesheet" href="{{ asset('cart.css') }}">
+    <div class="mt-5"></div>
 
-    <script src="cart.js"></script>
-  </head>
-  <body>
-    <div id="cart-wrap">
+   <div class="containe r">
+     <div id="cart-wrap " style="width:100%; padding:5%;">
       <!-- (B) PRODUCTS LIST -->
-    
-       <div id="cart-products">
+
+      <div class="  card"  style="max-width:65%; float:left;">
+          <div id="cart-products" class="row ">
          
+
+      </div>
 
       </div>
      
 
-      <!-- (C) CURRENT CART -->
-       <form action="/orders/create" method="POST" style="min-height: 500px; min-width:500px">
-        @csrf
-        
-      <div id="cart-items">
-        <input type="text" class="order">
-      </div>
+         
+
+          <!-- (C) CURRENT CART -->
+       <form action="/orders/create" method="POST"   style="width:20%; min-width:500px; float:right;">
+                @csrf
+                
+            <div id="cart-items" class="row">
+                <input type="text" class="order">
+            </div>
       </form>
-    </div>
-  </body>
-</html>
+
+
+       
+   </div>
+</x-app>

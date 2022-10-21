@@ -21,6 +21,7 @@ class MenuFactory extends Factory
             'description' => fake()->paragraph(6),
             'price' => 1.00,
             'status' => 'Available',
+             'createdBy' => fake()->unique()->name(),
         ];
     }
 }

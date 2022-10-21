@@ -1,3 +1,6 @@
+
+ngngdfngdngdgvn
+
 <center><h2><strong>Name: </strong>{{ $item->name }}</h2></center>
 <hr>
 <center><h4><strong>Description: </strong>{{ $item->description }}</h4></center>
@@ -24,3 +27,5 @@
 <input type="submit" value="Buy">
 
 </form></center>
+
+

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user')->references('id')->on('users');
             $table->string('refno');
+            $table->string('paymentRef')->default('Unpaid');
             $table->string('number');
             $table->mediumText('order');
             $table->float('amount');

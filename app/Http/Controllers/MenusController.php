@@ -5,9 +5,8 @@ use App\Models\Menu;
 use App\Models\Order;
 use JavaScript;
 
-
-
 use Illuminate\Http\Request;
+
 
 class MenusController extends Controller
 {
@@ -25,7 +24,15 @@ class MenusController extends Controller
 
         return view('cart');
     }
+     public function menus()
+    {
+        $menuItems=Menu::latest()->filter(request(['search']))->get();
+       
+        
+       
 
+        return view('menus.index')->With('menuItems',$menuItems);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -48,10 +55,14 @@ class MenusController extends Controller
             'name'=>'required',
             'description'=>'required',
             'price'=>'required',
+            'createdBy'=>'required',
         ]);
         $menu['status']='Available';
+         if($request->hasFile('photo')){
+            $menu['photo']=$request->file('photo')->store('menus','public');
+        }
         Menu::create($menu);
-        return redirect('/');
+        return redirect('/menus');
     }
 
     /**
@@ -75,6 +86,8 @@ class MenusController extends Controller
      */
     public function edit($id)
     {
+        $item=Menu::find($id);
+        return view('menus.edit')->with('item', $item);
     }
 
         /**
@@ -94,7 +107,19 @@ class MenusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $menu=$request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=>'required',
+            'createdBy'=>'required',
+        ]);
+
+        $menu['status']='Available';
+          if($request->hasFile('photo')){
+            $menu['photo']=$request->file('photo')->store('menus','public');
+        }
+        Menu::find($id)->update($menu);
+        return redirect('/menus');
     }
 
     /**
@@ -105,6 +130,7 @@ class MenusController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Menu::find($id)->delete();
+       return back();
     }
 }

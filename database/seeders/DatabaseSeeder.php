@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-          \App\Models\Menu::factory(30)->create();
+          \App\Models\Menu::factory(5)->create();
     }
 }
