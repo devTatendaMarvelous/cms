@@ -75,7 +75,7 @@ class OrdersController extends Controller
        $order= Order::where('refno',request()->refno)->get();
       
        Order::find($order[0]['id'])->update($transaction);
-        return view('home');
+        return redirect('home');
 
 
     }

@@ -7,7 +7,7 @@
      <div id="cart-wrap " style="width:100%; padding:5%;">
       <!-- (B) PRODUCTS LIST -->
 
-      <div class="  card"  style="max-width:65%; float:left;">
+      <div class="  card"  style="max-width:65%; float:left; padding:1rem;">
           <div id="cart-products" class="row ">
          
 

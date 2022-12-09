@@ -1,7 +1,15 @@
  <div data-active-color="white" data-background-color="crystal-clear" data-image="{{ asset('assets/img/sidebar-bg/08.jpg')}}" class="app-sidebar">
         <div class="sidebar-header">
-          <div class="logo clearfix"><a href="index-2.html" class="logo-text float-left">
-              <div class="logo-img"><img src="{{ asset('assets/img/logo.png')}}" alt="Convex Logo"/></div><span class="text align-middle">{{ config('app.name') }}</span></a><a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="ft-disc toggle-icon"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-circle"></i></a></div>
+         
+         
+              
+              
+          <div class="logo clearfix"><a href="/home" class="logo-text float-left">
+              <div class="log o-img" style="transform:scale(.8); margin-left:-15%"><img src="{{ asset('logo.webp')}}" alt="CMS"/>
+                <br><br> Canteen
+              </div>
+            </a>
+              <a id="sidebarToggle" href="javascript:;" class="nav-toggle d-none d-sm-none d-md-none d-lg-block"><i data-toggle="expanded" class="ft-disc toggle-icon"></i></a><a id="sidebarClose" href="javascript:;" class="nav-close d-block d-md-block d-lg-none d-xl-none"><i class="ft-circle"></i></a></div>
         </div>
         <div class="sidebar-content">
           <div class="nav-container">

@@ -40,14 +40,15 @@ var cart = {
       // WRAPPER
       p = products[id];
       item = document.createElement("div");
-      item.className = " p-3 col-md-3 card-header";
+      item.className = " col-md-3 card-header";
+      item.style=' border: 1px solid #ddd; border-radius:8px'
       cart.hPdt.appendChild(item);
 
       // PRODUCT IMAGE
-      part = document.createElement("img");
-      part.src = cart.iURL + p.img;
-      part.className = "p-img";
-      item.appendChild(part);
+      // part = document.createElement("img");
+      // part.src = cart.iURL + p.img;
+      // part.className = "p-img";
+      // item.appendChild(part);
 
       // PRODUCT NAME
       part = document.createElement("div");

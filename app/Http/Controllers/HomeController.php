@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,23 @@ class HomeController extends Controller
     public function index()
     {
           if(auth()->user()->role=='Client'){
-            return view('client.index');
+            return redirect('/orders/client');
         }else{
-              return view('home');
+            $orders=Order::all();
+            $totalOrders=count($orders);
+            $totalRevenue=0;
+            
+            foreach($orders as $order){
+               
+                if($order['status']!='Pending'){
+                    $totalRevenue+= $order['amount'];
+                }
+                
+            }
+            
+              return view('home')
+              ->with('totalRevenue',$totalRevenue)
+              ->with('totalOrders',$totalOrders);
         }
     }
 }

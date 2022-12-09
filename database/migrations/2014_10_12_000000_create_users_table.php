@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -28,8 +27,8 @@ return new class extends Migration
           // Insert some stuff
     DB::table('users')->insert(
         array(
-            'name' =>'Tatenda Marvelous',
-            'email' => 'marveloustchimusoro@gmail.com',
+            'name' =>'Canteen SuperAdmin',
+            'email' => 'canteensuperadmin@msu.ac.zw',
             'role'=>'SuperAdmin',
         )
     );

@@ -44,7 +44,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('logo.webp') }}" alt="">
+                    <h4 style=""><strong>Canteen</strong></h4>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -52,21 +53,22 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <form action="/menus/search" method="POST"    style="width:50%; min-width:500px; float:right;">
+                                @csrf
+                                
+                            <div id="cart-search" class="row p-3">
+                                <input type="text" name="search"class=" form-control order col-md-6 mr-2" placeholder="Search Food Items">
+                              
+                                <input type="submit" value="Search" class=" btn order col-5"  >
+                            </div>
+                    </form>
+                    <ul class="navbar-nav me-auto col-md-6">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                    <form action="/menus/search" method="POST"   style="width:20%; min-width:500px; float:right;">
-                @csrf
-                
-            <div id="cart-search" class="row">
-                <input type="text" name="search"class="order col-" placeholder="Search Food Items">
-                <div class="col-1"></div>
-                <input type="submit" value="Search" class="order col-5"  >
-            </div>
-      </form>
+                    <ul class="navbar-nav ms-auto col-md-4 ">
+                    
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -82,7 +84,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link drop down-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
